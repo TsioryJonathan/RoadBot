@@ -70,7 +70,7 @@ function TopCareers() {
       description="Découvrez les parcours professionnels les plus recherchés actuellement."
       bgColor="bg-[var(--color-card)]/20"
     >
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-10 py-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 py-5">
         {topCareers.map((career) => (
           <CareerCard career={career} key={career.id} />
         ))}

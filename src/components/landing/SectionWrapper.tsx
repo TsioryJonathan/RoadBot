@@ -10,12 +10,13 @@ function SectionWrapper({
   bgColor?: string;
   title: string;
   description: string;
-  id:string;
+  id: string;
   children: React.ReactNode;
 }) {
   return (
     <section
-      className={`w-full h-full flex flex-col items-center justify-center px-4 py-8 ${
+      id={id}
+      className={`w-full h-full flex flex-col items-center justify-center px-14 py-8 ${
         bgColor ? bgColor : "bg-white"
       }`}
     >
