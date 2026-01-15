@@ -7,11 +7,11 @@ import { Button } from "../ui/button";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "Home", href: "#hero" },
-  { label: "Top Careers", href: "#top-careers" },
-  { label: "Roadmap", href: "#roadmap" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "hero" },
+  { label: "Top Careers", href: "top-careers" },
+  { label: "Roadmap", href: "roadmap" },
+  { label: "About", href: "about" },
+  { label: "Contact", href: "contact" },
 ];
 
 function Navbar() {
@@ -32,7 +32,7 @@ function Navbar() {
           {navLinks.map((link) => (
             <li key={link.label}>
               <a
-                href={link.href}
+                href={`/#${link.href}`}
                 className="hover:text-[var(--color-accent)] transition-colors duration-200"
               >
                 {link.label}

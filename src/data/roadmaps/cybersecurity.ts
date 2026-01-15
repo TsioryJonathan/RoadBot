@@ -1,66 +1,129 @@
 import { Node, Edge } from "@xyflow/react";
+import {
+  FaLinux,
+  FaNetworkWired,
+  FaUserShield,
+  FaBug,
+  FaCertificate,
+} from "react-icons/fa";
+
+export interface CareerAbout {
+  id: number;
+  title: string;
+  description: string;
+  prerequisites: string[];
+  resources: { name: string; link: string }[];
+}
+
+export const cybersecurityAbout: CareerAbout = {
+  id: 1,
+  title: "Ingénieur Cybersécurité",
+  description:
+    "Protège les systèmes informatiques et les données sensibles contre les attaques.",
+  prerequisites: [
+    "Bases en informatique",
+    "Connaissances réseaux",
+    "Notions de sécurité",
+  ],
+  resources: [
+    {
+      name: "Cybrary Cybersecurity Path",
+      link: "https://www.cybrary.it/skill-paths/cyber-security/",
+    },
+    { name: "OWASP", link: "https://owasp.org/" },
+    {
+      name: "Coursera Intro to Cyber Security",
+      link: "https://www.coursera.org/specializations/intro-cyber-security",
+    },
+  ],
+};
 
 export const cybersecurityNodes: Node[] = [
   {
-    id: "start",
+    id: "cs1",
     type: "roadmapNode",
     position: { x: 0, y: 0 },
     data: {
-      title: "1 - Bases Informatique",
-      description: "Systèmes, Linux, lignes de commande",
+      title: "Bases Informatique",
+      description: "Systèmes, Linux, commandes",
       duration: "1 mois",
-      icon: "/icons/linux.svg",
+      resources: [
+        { name: "Linux Basics", link: "https://linuxjourney.com/" },
+        {
+          name: "Computer Networking",
+          link: "https://www.coursera.org/learn/computer-networking",
+        },
+      ],
+      icon: FaLinux,
     },
   },
   {
-    id: "network",
+    id: "cs2",
     type: "roadmapNode",
     position: { x: 300, y: 0 },
     data: {
-      title: "2 - Réseaux",
-      description: "TCP/IP, DNS, HTTP, firewalls",
+      title: "Réseaux",
+      description: "TCP/IP, HTTP, Firewalls",
       duration: "1 mois",
-      icon: "/icons/network.svg",
+      resources: [
+        {
+          name: "Networking Fundamentals",
+          link: "https://www.khanacademy.org/computing/computer-science/internet-intro",
+        },
+      ],
+      icon: FaNetworkWired,
     },
   },
   {
-    id: "security-basics",
+    id: "cs3",
     type: "roadmapNode",
     position: { x: 600, y: 0 },
     data: {
-      title: "3 - Sécurité Informatique",
-      description: "Chiffrement, authentification, vulnérabilités",
+      title: "Sécurité Informatique",
+      description: "Chiffrement, vulnérabilités, authentification",
       duration: "1 mois",
-      icon: "/icons/security.svg",
+      resources: [
+        {
+          name: "Intro to Cryptography",
+          link: "https://www.coursera.org/learn/crypto",
+        },
+      ],
+      icon: FaUserShield,
     },
   },
   {
-    id: "pentest",
+    id: "cs4",
     type: "roadmapNode",
-    position: { x: 300, y: 220 },
+    position: { x: 0, y: 300 },
     data: {
-      title: "4 - Pentesting",
-      description: "Tests d’intrusion, OWASP, Metasploit",
+      title: "Pentesting",
+      description: "Tests d’intrusion, outils et méthodologies",
       duration: "2 mois",
-      icon: "/icons/pentest.svg",
+      resources: [
+        { name: "Metasploit Guide", link: "https://www.metasploit.com/" },
+      ],
+      icon: FaBug,
     },
   },
   {
-    id: "cert",
+    id: "cs5",
     type: "roadmapNode",
-    position: { x: 600, y: 220 },
+    position: { x: 300, y: 300 },
     data: {
-      title: "5 - Certifications",
+      title: "Certifications",
       description: "CEH, Security+, OSCP",
       duration: "2 mois",
-      icon: "/icons/certification.svg",
+      resources: [
+        { name: "OSCP", link: "https://www.offensive-security.com/pwk-oscp/" },
+      ],
+      icon: FaCertificate,
     },
   },
 ];
 
 export const cybersecurityEdges: Edge[] = [
-  { id: "e1", source: "start", target: "network" },
-  { id: "e2", source: "network", target: "security-basics" },
-  { id: "e3", source: "security-basics", target: "pentest" },
-  { id: "e4", source: "pentest", target: "cert" },
+  { id: "e1", source: "cs1", target: "cs2" },
+  { id: "e2", source: "cs2", target: "cs3" },
+  { id: "e3", source: "cs3", target: "cs4" },
+  { id: "e4", source: "cs4", target: "cs5" },
 ];

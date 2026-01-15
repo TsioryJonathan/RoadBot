@@ -1,16 +1,18 @@
 import Hero from "@/components/landing/Hero";
 import TopCareers from "@/components/landing/TopCareers";
-import { Career } from "@/types/Career";
-import assets from "../../public/images/assets";
+import { GiCyberEye, GiChefToque, GiMedicalPack } from "react-icons/gi";
+import { FaLaptopCode, FaPaintBrush, FaBullhorn } from "react-icons/fa";
+import { ClickableCareer } from "@/components/landing/CareerCard";
 
-export const topCareers: Career[] = [
+export const topCareers: ClickableCareer[] = [
   {
     id: 1,
     title: "Ingénieur Cybersécurité",
     description:
       "Protège les systèmes informatiques et les données sensibles contre les attaques.",
     duration: "2 ans",
-    icon: assets.cyberIllustration,
+    icon: GiCyberEye,
+    href: "ingenieur-cybersecurite",
   },
   {
     id: 2,
@@ -18,7 +20,8 @@ export const topCareers: Career[] = [
     description:
       "Crée des applications web complètes, du backend au frontend, avec des technologies modernes.",
     duration: "1,5 ans",
-    icon: assets.cyberIllustration,
+    icon: FaLaptopCode,
+    href: "developpeur-fullstack",
   },
   {
     id: 3,
@@ -26,7 +29,8 @@ export const topCareers: Career[] = [
     description:
       "Conçoit des interfaces et expériences utilisateurs intuitives et attractives.",
     duration: "1,5 ans",
-    icon: assets.cyberIllustration,
+    icon: FaPaintBrush,
+    href: "designer-ux-ui",
   },
   {
     id: 4,
@@ -34,7 +38,8 @@ export const topCareers: Career[] = [
     description:
       "Planifie et coordonne les campagnes marketing pour maximiser l'impact et la visibilité.",
     duration: "1 an",
-    icon: assets.cyberIllustration,
+    icon: FaBullhorn,
+    href: "chef-de-projet-marketing",
   },
   {
     id: 5,
@@ -42,7 +47,8 @@ export const topCareers: Career[] = [
     description:
       "Fournit des soins médicaux primaires et assure le suivi de la santé des patients.",
     duration: "6 ans",
-    icon: assets.cyberIllustration,
+    icon: GiMedicalPack,
+    href: "medecin-generaliste",
   },
   {
     id: 6,
@@ -50,7 +56,8 @@ export const topCareers: Career[] = [
     description:
       "Dirige la préparation des repas et l’organisation d’une cuisine professionnelle.",
     duration: "3 ans",
-    icon: assets.cyberIllustration,
+    icon: GiChefToque,
+    href: "chef-de-cuisine",
   },
 ];
 
@@ -58,7 +65,7 @@ export default function Home() {
   return (
     <div className="w-full h-full overflow-x-hidden">
       <Hero />
-      <TopCareers trendingCareers={topCareers} />
+      <TopCareers />
     </div>
   );
 }

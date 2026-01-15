@@ -21,9 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr">
-      <body className={`${raleway.variable} antialiased`}>
+      <body className={`${raleway.variable} antialiased overflow-x-hidden`}>
         <Navbar />
-        <div className="min-w-screen min-h-screen pt-10">{children}</div>
+        <div className="min-w-screen min-h-screen pt-10 ">{children}</div>
       </body>
     </html>
   );
