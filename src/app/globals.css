@@ -75,3 +75,41 @@
     @apply bg-[var(--color-background)] text-[var(--color-foreground)];
   }
 }
+
+.react-flow__node {
+  color: black;
+}
+
+/* ==========================
+   React Flow Controls (Dark)
+   ========================== */
+
+   .roadmap-controls {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  
+  .roadmap-controls button {
+    background-color: var(--color-card) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: var(--color-text-primary) !important;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  
+  .roadmap-controls button:hover {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+    transform: scale(1.05);
+  }
+  
+  .roadmap-controls button svg {
+    fill: var(--color-text-primary) !important;
+  }
+  
+  .roadmap-controls button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+  
