@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${raleway.variable} antialiased`}>
         <Navbar />
-        {children}
+        <div className="w-full h-full pt-10">{children}</div>
       </body>
     </html>
   );

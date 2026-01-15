@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@import "../../node_modules/tw-animate-css/dist/tw-animate.css";
-
-@custom-variant dark (&:is(.dark *));
 
 /* Police principale */
 * {
@@ -9,17 +6,14 @@
 }
 
 /* ==========================
-   THEME MIDNIGHT BLUE ROADBOT
+   THEME DARK MIDNIGHT / ALMOST BLACK
    ========================== */
 @theme {
-  /* Couleurs midnight blue / néon bleu */
-  --color-bg-primary: #0b1a36;     /* fond principal très sombre bleu */
-  --color-bg-secondary: #11264d;   /* fond secondaire / cards */
-  --color-neon-blue: #1ab2ff;      /* accent néon bleu */
-  --color-neon-cyan: #00ffe0;      /* accent cyan pour hover */
-  --color-text-primary: #ffffff;    /* texte principal */
-  --color-text-secondary: #a0cfff; /* texte secondaire bleu clair */
-  --color-glow-blue: #33d4ff;      /* glow / ombre néon */
+  --color-bg-primary: #0a0c14; /* presque noir, légèrement bleu */
+  --color-bg-secondary: #12151f; /* fond secondaire un peu plus clair */
+  --color-accent: #1a6cff; /* accent bleu sobre pour boutons ou hover */
+  --color-text-primary: #ffffff; /* texte principal */
+  --color-text-secondary: #a0bfff; /* texte secondaire bleu clair */
 
   /* Police principale */
   --font-raleway: "Raleway", sans-serif;
@@ -30,17 +24,12 @@
   --color-foreground: var(--color-text-primary);
   --color-card: var(--color-bg-secondary);
   --color-card-foreground: var(--color-text-primary);
-  --color-popover: var(--color-bg-secondary);
-  --color-popover-foreground: var(--color-text-primary);
-  --color-primary: var(--color-neon-blue);
+  --color-primary: var(--color-accent);
   --color-primary-foreground: var(--color-text-primary);
-  --color-secondary: var(--color-neon-cyan);
+  --color-secondary: var(--color-accent);
   --color-secondary-foreground: var(--color-text-primary);
   --color-muted: var(--color-bg-secondary);
   --color-muted-foreground: var(--color-text-secondary);
-  --color-accent: var(--color-neon-blue);
-  --color-accent-foreground: var(--color-text-primary);
-  --color-glow: var(--color-glow-blue);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -56,32 +45,27 @@
   --radius: 0.625rem;
 }
 
-/* Dark mode */
+/* Dark mode simple */
 .dark {
-  --color-background: #0b1a36;
+  --color-background: #0a0c14;
   --color-foreground: #ffffff;
-  --color-card: #11264d;
+  --color-card: #12151f;
   --color-card-foreground: #ffffff;
-  --color-popover: #11264d;
-  --color-popover-foreground: #ffffff;
-  --color-primary: #1ab2ff;
+  --color-primary: #1a6cff;
   --color-primary-foreground: #ffffff;
-  --color-secondary: #00ffe0;
+  --color-secondary: #1a6cff;
   --color-secondary-foreground: #ffffff;
-  --color-muted: #11264d;
-  --color-muted-foreground: #a0cfff;
-  --color-accent: #1ab2ff;
-  --color-accent-foreground: #ffffff;
-  --color-glow: #33d4ff;
+  --color-muted: #12151f;
+  --color-muted-foreground: #a0bfff;
 }
 
 @layer utilities {
   .border-border {
-    border: 1px solid var(--color-accent);
+    border: 1px solid var(--color-primary);
   }
 
   .outline-ring {
-    outline: 2px solid var(--color-glow);
+    outline: 2px solid var(--color-primary);
     outline-offset: 2px;
   }
 }
