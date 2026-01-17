@@ -4,6 +4,7 @@ import { GiCyberEye, GiChefToque, GiMedicalPack } from "react-icons/gi";
 import { FaLaptopCode, FaPaintBrush, FaBullhorn } from "react-icons/fa";
 import { ClickableCareer } from "@/components/landing/CareerCard";
 import AboutSection from "@/components/landing/AboutSection";
+import ContactSection from "@/components/landing/ContactSection";
 
 export const topCareers: ClickableCareer[] = [
   {
@@ -68,6 +69,7 @@ export default function Home() {
       <Hero />
       <TopCareers />
       <AboutSection />
+      <ContactSection />
     </div>
   );
 }

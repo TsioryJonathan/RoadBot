@@ -21,7 +21,7 @@ function SectionWrapper({
       }`}
     >
       <div className="flex flex-col items-center justify-center gap-5">
-        <h2 className="text-center text-3xl font-bold">{title}</h2>
+        <h2 className="text-justify text-3xl font-bold">{title}</h2>
         <p className="text-lg">{description}</p>
       </div>
       {children}

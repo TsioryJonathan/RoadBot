@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr">
+    <html lang="fr" suppressHydrationWarning>
       <body className={`${raleway.variable} antialiased overflow-x-hidden`}>
         <Navbar />
         <div className="min-w-screen min-h-screen pt-10 ">{children}</div>
