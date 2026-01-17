@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Raleway } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/common/Navbar";
+import { Toaster } from "@/components/ui/sonner";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -21,9 +21,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${raleway.variable} antialiased overflow-x-hidden`} suppressHydrationWarning>
-        <Navbar />
-        <div className="min-w-screen min-h-screen pt-10 ">{children}</div>
+      <body
+        className={`${raleway.variable} antialiased overflow-x-hidden`}
+        suppressHydrationWarning
+      >
+        <main>{children}</main>
+        <Toaster />
       </body>
     </html>
   );
