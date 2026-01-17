@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { signUp } from "@/lib/auth-client";
+import { signUp, useSession } from "@/lib/auth-client";
 
-export default function SignUpPage() {
+export default function Register() {
+  const { data: session, isPending } = useSession();
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
 
@@ -26,6 +27,12 @@ export default function SignUpPage() {
       router.push("/dashboard");
     }
   }
+
+  useEffect(() => {
+    if (!isPending && session?.user) {
+      router.push("/dashboard");
+    }
+  }, [isPending, session, router]);
 
   return (
     <main className="max-w-md mx-auto p-6 space-y-4 text-white">
