@@ -29,7 +29,7 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
         image={session.user.image || "https://avatar.iran.liara.run/public"}
       />
       <Sidebar />
-      <main className="pl-20 pt-20"> {children}</main>
+      <main className="pl-[20vw] pt-20"> {children}</main>
     </div>
   );
 }
