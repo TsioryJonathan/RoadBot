@@ -50,7 +50,7 @@ export default function QuestionStep({
         <div
           className={
             question.options!.length! > 3
-              ? "grid grid-cols-2 grid-rows-3 gap-4"
+              ? "grid grid-rows-3 grid-cols-2 gap-4"
               : "flex flex-col gap-4"
           }
         >

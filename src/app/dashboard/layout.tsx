@@ -15,7 +15,6 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
       router.push("/login");
     }
   }, [isPending, session, router]);
-  console.log(session?.user);
 
   if (isPending)
     return <p className="text-center mt-8 text-white">Loading...</p>;
