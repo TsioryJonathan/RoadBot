@@ -1,10 +1,11 @@
-import Hero from "@/components/landing/Hero";
-import TopCareers from "@/components/landing/TopCareers";
-import { GiCyberEye, GiChefToque, GiMedicalPack } from "react-icons/gi";
-import { FaLaptopCode, FaPaintBrush, FaBullhorn } from "react-icons/fa";
-import { ClickableCareer } from "@/components/landing/CareerCard";
+"use client";
 
-export const topCareers: ClickableCareer[] = [
+import SectionWrapper from "./SectionWrapper";
+import { CareerCard } from "./CareerCard";
+import { GiChefToque, GiCyberEye, GiMedicalPack } from "react-icons/gi";
+import { FaBullhorn, FaLaptopCode, FaPaintBrush } from "react-icons/fa";
+
+export const topCareers = [
   {
     id: 1,
     title: "Ingénieur Cybersécurité",
@@ -61,11 +62,21 @@ export const topCareers: ClickableCareer[] = [
   },
 ];
 
-export default function Home() {
+function TopCareers() {
   return (
-    <div className="w-full h-full overflow-x-hidden">
-      <Hero />
-      <TopCareers />
-    </div>
+    <SectionWrapper
+      id="top-careers"
+      title="Carrières en vogue"
+      description="Découvrez les parcours professionnels les plus recherchés actuellement."
+      bgColor="bg-[var(--color-card)]/20"
+    >
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-10 py-5">
+        {topCareers.map((career) => (
+          <CareerCard career={career} key={career.id} />
+        ))}
+      </div>
+    </SectionWrapper>
   );
 }
+
+export default TopCareers;
