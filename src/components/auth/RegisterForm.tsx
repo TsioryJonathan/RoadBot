@@ -7,6 +7,8 @@ function RegisterForm({
   handleSubmit,
   name,
   setName,
+  username,
+  setUsername,
   email,
   setEmail,
   password,
@@ -18,6 +20,8 @@ function RegisterForm({
   handleSubmit: (e: React.FormEvent) => void;
   name: string;
   setName: React.Dispatch<React.SetStateAction<string>>;
+  username: string;
+  setUsername: React.Dispatch<React.SetStateAction<string>>;
   email: string;
   setEmail: React.Dispatch<React.SetStateAction<string>>;
   password: string;
@@ -34,6 +38,15 @@ function RegisterForm({
           placeholder="Nom Complet"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          className="bg-neutral-900 text-white w-full outline-none"
+          required
+        />
+
+        <Input
+          type="text"
+          placeholder="Nom d'utilisateur"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           className="bg-neutral-900 text-white w-full outline-none"
           required
         />

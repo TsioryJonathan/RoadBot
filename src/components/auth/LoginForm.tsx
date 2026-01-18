@@ -30,7 +30,7 @@ function LoginForm({
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="bg-neutral-900 text-white w-full"
+          className="bg-neutral-900 text-white w-full text-sm"
           required
         />
 
@@ -40,7 +40,7 @@ function LoginForm({
             placeholder="Mot de passe"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="bg-neutral-900 text-white pr-10 w-full"
+            className="bg-neutral-900 text-white pr-10 w-full text-sm"
             required
           />
           <button

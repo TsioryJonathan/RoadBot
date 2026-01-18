@@ -12,18 +12,19 @@ import Redirect from "@/components/auth/Redirect";
 export default function RegisterPage() {
   const { toasts, addToast } = useToaster();
   const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loadingEmail, setLoadingEmail] = useState(false);
-  const [loadingGithub, setLoadingGithub] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [loadingEmail, setLoadingEmail] = useState<boolean>(false);
+  const [loadingGithub, setLoadingGithub] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoadingEmail(true);
 
     try {
-      const res = await signUp.email({ email, password, name });
+      const res = await signUp.email({ email, name, password, username });
       if (res.error) {
         addToast(res.error.message!, "error");
       }
@@ -56,6 +57,8 @@ export default function RegisterPage() {
           handleSubmit={handleSubmit}
           name={name}
           setName={setName}
+          username={username}
+          setUsername={setUsername}
           email={email}
           setEmail={setEmail}
           password={password}
@@ -71,7 +74,6 @@ export default function RegisterPage() {
         />
         <Redirect currentState="signingUp" />
       </div>
-      <Dot />
       <Toaster toasts={toasts} />
     </div>
   );

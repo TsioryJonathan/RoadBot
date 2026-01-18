@@ -9,11 +9,11 @@ export default function FormHeader({ text }: { text: string }) {
       <Image
         src={assets.logo}
         alt="RoadBot"
-        width={60}
-        height={60}
+        width={50}
+        height={50}
         loading="lazy"
       />
-      <p className="text-sm text-gray-300">{text}</p>
+      <p className="text-[15px] text-gray-300">{text}</p>
     </div>
   );
 }
