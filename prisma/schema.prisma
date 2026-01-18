@@ -79,3 +79,60 @@ model Verification {
   @@index([identifier])
   @@map("verification")
 }
+
+model Career {
+  id            String   @id @default(uuid())
+  slug          String   @unique
+  title         String
+  description   String
+  prerequisites String[]
+  createdAt     DateTime @default(now())
+
+  roadmap       Roadmap?
+}
+
+model Roadmap {
+  id        String   @id @default(uuid())
+  jsonData  Json
+  createdAt DateTime @default(now())
+
+  careerId  String   @unique
+  career    Career   @relation(fields: [careerId], references: [id])
+
+  step      Step[]
+}
+
+model Step {
+  id      String  @id @default(uuid())
+  title   String
+  description String
+  estimatedTimeHours Int
+  order   Int
+
+  roadmapId String
+  roadmap   Roadmap @relation(fields: [roadmapId], references: [id])
+
+  resources Resource[]
+  createdAt DateTime @default(now())
+}
+
+model Resource {
+  id        String   @id @default(uuid())
+  title     String
+  url       String
+  type      ResourceType
+  createdAt DateTime @default(now())
+
+  stepId    String
+  step      Step     @relation(fields: [stepId], references: [id])
+}
+
+enum ResourceType {
+  VIDEO
+  ARTICLE
+  COURSE
+  BOOK
+  TOOL
+  DOCUMENTATION
+}
+

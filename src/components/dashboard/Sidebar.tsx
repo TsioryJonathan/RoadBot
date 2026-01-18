@@ -5,6 +5,7 @@ import { Settings, User, Workflow } from "lucide-react";
 import { IconType } from "react-icons";
 import SidebarChip from "./SidebarChip";
 import SignOutButton from "../auth/SignOutButton";
+import GenerateRoadmapButton from "./GenerateRoadmapButton";
 
 export interface SideBarChipProps {
   name: string;
@@ -24,9 +25,10 @@ const navItems: SideBarChipProps[] = [
 
 function Sidebar() {
   return (
-    <div className="fixed left-0 w-[20vw] h-screen bg-bg-secondary transition-all  overflow-hidden duration-300 ease-in-out p-5 flex flex-col justify-between">
+    <div className="fixed left-0 top-0 w-[20vw] h-screen bg-bg-secondary transition-all  overflow-hidden duration-300 ease-in-out p-5 flex flex-col justify-between">
       <div className="flex flex-col gap-10">
         <SidebarHeader />
+        <GenerateRoadmapButton />
         <div className="flex flex-col gap-5">
           {navItems.map((item) => (
             <SidebarChip {...item} key={item.name} />

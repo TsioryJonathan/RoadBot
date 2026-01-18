@@ -1,5 +1,6 @@
 "use client";
 
+import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import Sidebar from "@/components/dashboard/Sidebar";
 import { useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
@@ -23,8 +24,12 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-w-screen min-h-screen bg-background">
+      <DashboardHeader
+        name={session.user.username || session.user.name}
+        image={session.user.image || "https://avatar.iran.liara.run/public"}
+      />
       <Sidebar />
-      {children}
+      <main className="pl-20 pt-20"> {children}</main>
     </div>
   );
 }

@@ -43,7 +43,12 @@ export default function LoginPage() {
   const handleLoginWithGithub = async () => {
     setLoadingGithub(true);
     try {
-      await signInWithGithub();
+      const res = await signInWithGithub();
+      if (res.error) {
+        setError("Erreur GitHub");
+        addToast(error, "error");
+      }
+      router.push("/dashboard");
     } catch (err) {
       setError("Erreur GitHub");
       addToast(error, "error");

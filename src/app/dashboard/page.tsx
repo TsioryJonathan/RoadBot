@@ -1,5 +1,7 @@
 "use client";
 
+import { redirect } from "next/navigation";
+
 export default function DashboardPage() {
-  return <div></div>;
+  return redirect("/dashboard/my-roadmaps");
 }
