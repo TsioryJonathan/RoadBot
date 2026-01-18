@@ -5,7 +5,6 @@ import { signInWithGithub, signUp } from "@/lib/auth-client";
 import { Toaster, useToaster } from "@/components/ui/toaster";
 import FormHeader from "@/components/auth/FormHeader";
 import RegisterForm from "@/components/auth/RegisterForm";
-import Dot from "@/components/auth/Dot";
 import SocialAuth from "@/components/auth/SocialAuth";
 import Redirect from "@/components/auth/Redirect";
 

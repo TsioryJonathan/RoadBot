@@ -8,6 +8,7 @@ import FormHeader from "@/components/auth/FormHeader";
 import LoginForm from "@/components/auth/LoginForm";
 import SocialAuth from "@/components/auth/SocialAuth";
 import Redirect from "@/components/auth/Redirect";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
   const { toasts, addToast } = useToaster();
@@ -17,6 +18,7 @@ export default function LoginPage() {
   const [loadingEmail, setLoadingEmail] = useState(false);
   const [loadingGithub, setLoadingGithub] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,11 +30,11 @@ export default function LoginPage() {
 
       if (res.error) {
         setError("Identifiants invalides");
-        addToast(res.error.message!, "error");
+        addToast(error, "error");
       }
+      router.push("/dashboard");
     } catch (err) {
       setError("Identifiants invalides");
-      addToast(error, "error");
     } finally {
       setLoadingEmail(false);
     }
@@ -41,7 +43,12 @@ export default function LoginPage() {
   const handleLoginWithGithub = async () => {
     setLoadingGithub(true);
     try {
-      await signInWithGithub();
+      const res = await signInWithGithub();
+      if (res.error) {
+        setError("Erreur GitHub");
+        addToast(error, "error");
+      }
+      router.push("/dashboard");
     } catch (err) {
       setError("Erreur GitHub");
       addToast(error, "error");
