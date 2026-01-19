@@ -8,7 +8,10 @@ import { Button } from "@/components/ui/button";
 import { Toaster, useToaster } from "@/components/ui/toaster";
 import { questionList } from "@/data/surveyQuestion/questionList";
 import { SurveyQuestion } from "@/types/SurveyQuestion.type";
-import { resolve } from "dns";
+import {
+  mapProfessionalAnswers,
+  mapStudentAnswers,
+} from "@/util/mapUserProfileAnswer";
 import React, { useMemo, useState } from "react";
 
 function TakeSurvey() {
@@ -18,7 +21,7 @@ function TakeSurvey() {
 
   const { toasts, addToast } = useToaster();
 
-  const [data, setData] = useState<SurveyResultType | null>(null);
+  const [data, setData] = useState(null);
 
   /* Questions based on user situation */
   const question = useMemo<SurveyQuestion[] | null>(() => {
@@ -48,13 +51,16 @@ function TakeSurvey() {
       "success"
     );
     setSurveyDone(true);
-
-    const res = await submitSurvey(answers, userSituation!);
-    console.log(res);
+    const optimizedAnswers =
+      userSituation == "student"
+        ? mapStudentAnswers(answers)
+        : mapProfessionalAnswers(answers);
+    const res = await submitSurvey(optimizedAnswers, userSituation!);
+    setData(JSON.parse(res.data.content).jobs);
   };
 
   return (
-    <div className="">
+    <div className="px-10">
       <Toaster toasts={toasts} />
       {surveyDone && data ? (
         <SurveyResult data={data} />

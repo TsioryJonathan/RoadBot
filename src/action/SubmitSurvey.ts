@@ -1,5 +1,7 @@
+import { UserProfile } from "@/types/UserProfile.type";
+
 export const submitSurvey = async (
-  data: Record<string, string | string[] | null>,
+  data: UserProfile,
   situation: "student" | "professional"
 ) => {
   try {
@@ -11,14 +13,9 @@ export const submitSurvey = async (
     });
 
     const dataRes = await res.json();
-    const normalizedResponse = dataRes.data
-      .replaceAll("json", "")
-      .replaceAll("```", "")
-      .trim();
 
-    console.log(normalizedResponse);
 
-    return normalizedResponse;
+    return dataRes;
   } catch (error) {
     console.error("Error submitting survey:", error);
   }
