@@ -1,13 +1,13 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { UserProfile } from "@/types/UserProfile.type";
 
 export function mapStudentAnswers(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   answers: Record<string, any>
 ): UserProfile {
   return {
     situation: "student",
 
-    interests: answers.q1,
+    student_interests: answers.q1,
 
     teamwork:
       answers.q2 === "Seul"
@@ -78,15 +78,12 @@ export function mapStudentAnswers(
 }
 
 export function mapProfessionalAnswers(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   answers: Record<string, any>
 ): UserProfile {
   return {
     situation: "professional",
 
     currentDomain: answers.q1,
-
-    interests: answers.q2,
 
     opennessToChange:
       answers.q3 === "Oui, sans hésiter"
@@ -95,7 +92,23 @@ export function mapProfessionalAnswers(
         ? "medium"
         : "low",
 
+    skillsToDevelop: Array.isArray(answers.q6) ? answers.q6 : [answers.q6].filter(Boolean),
+
+    teamwork:
+      answers.q8 === "Seul"
+        ? "solo"
+        : answers.q8 === "En équipe"
+        ? "team"
+        : "mixed",
+
     workEnvironment: answers.q4,
+
+    techAffinity:
+      answers.q10 === "Oui très à l'aise"
+        ? "high"
+        : answers.q10 === "Oui"
+        ? "medium"
+        : "low",
 
     workRhythm:
       answers.q5 === "Stable et régulier"
@@ -103,8 +116,6 @@ export function mapProfessionalAnswers(
         : answers.q5 === "Intense par période"
         ? "intense"
         : "flexible",
-
-    skillsToDevelop: answers.q6,
 
     motivation:
       answers.q7 === "Gagner plus"
@@ -117,21 +128,7 @@ export function mapProfessionalAnswers(
         ? "creativity"
         : "passion",
 
-    teamwork:
-      answers.q8 === "Seul"
-        ? "solo"
-        : answers.q8 === "En équipe"
-        ? "team"
-        : "mixed",
-
     learningStyle: answers.q9,
-
-    techAffinity:
-      answers.q10 === "Oui très à l'aise"
-        ? "high"
-        : answers.q10 === "Oui"
-        ? "medium"
-        : "low",
 
     collaboration:
       answers.q11 === "Oui, beaucoup"

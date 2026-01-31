@@ -55,8 +55,8 @@ function TakeSurvey() {
       userSituation == "student"
         ? mapStudentAnswers(answers)
         : mapProfessionalAnswers(answers);
-    const res = await submitSurvey(optimizedAnswers, userSituation!);
-    setData(JSON.parse(res.data.content).jobs);
+    const res = await submitSurvey(optimizedAnswers, userSituation!);    
+    setData(res?.data.jobs);
   };
 
   return (

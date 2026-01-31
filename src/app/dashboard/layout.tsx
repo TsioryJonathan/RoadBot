@@ -4,7 +4,7 @@ import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import Sidebar from "@/components/dashboard/Sidebar";
 import { useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 
 function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();

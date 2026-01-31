@@ -11,11 +11,11 @@ export const submitSurvey = async (
       method: "POST",
       body: JSON.stringify(normalizedData),
     });
-
     const dataRes = await res.json();
+    const toReturn = JSON.parse(dataRes.data.content);
+    console.log("Survey submission response:", toReturn);
 
-
-    return dataRes;
+    return { data: toReturn };
   } catch (error) {
     console.error("Error submitting survey:", error);
   }

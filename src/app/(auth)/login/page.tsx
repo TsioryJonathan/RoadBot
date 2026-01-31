@@ -30,7 +30,8 @@ export default function LoginPage() {
 
       if (res.error) {
         setError("Identifiants invalides");
-        addToast(error, "error");
+        addToast(res.error.message!, "error");
+        return;
       }
       router.push("/dashboard");
     } catch (err) {

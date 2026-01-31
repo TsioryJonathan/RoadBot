@@ -1,7 +1,7 @@
 export type UserProfile = {
   situation: "student" | "professional";
-
-  interests?: string[];
+  student_interests?: string;
+  StudentInterests?: string[];
   currentDomain?: string;
 
   opennessToChange?: "low" | "medium" | "high";
