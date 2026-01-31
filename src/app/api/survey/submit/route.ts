@@ -498,7 +498,7 @@ export async function POST(request: Request) {
     - Sans indication que le type de reponses est json
     - Pas de backticks autour du JSON.
     - AUCUN texte hors du JSON.
-    
+
     Tu es un générateur de JSON strict.
 
 RÈGLES ABSOLUES :
@@ -531,7 +531,7 @@ Structure EXACTE attendue :
     
     CONTRAINTES :
     - Description riche mais concise, 2-3 missions et responsabilités suffisent.
-    - Les ressources doivent contenir uniquement le site principal (ex: https://www.onisep.fr).
+    - Les ressources doivent contenir uniquement le site principal (ex: https://www.onisep.fr, ...) tu peux ajouter toute les ressources que tu juges necessaire.
     - Salaire = le salaire moyen le plus élevé disponible.
           `,
         },

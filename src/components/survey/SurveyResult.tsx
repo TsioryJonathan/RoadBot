@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowBigRight, Target } from "lucide-react";
+import { ArrowBigRight, Clock, Target } from "lucide-react";
 import { useState } from "react";
 import JobModal from "../career/JobModal";
 
@@ -67,8 +67,10 @@ function SurveyResult({ data }: { data: Career[] }) {
                   {career.description.overview}
                 </p>
 
-                <div className="text-sm">
-                  <span className="font-medium">⏳ Durée estimée :</span>{" "}
+                <div className="text-sm flex items-center justify-center gap-2">
+                  <span className="font-medium">
+                    <Clock /> Durée estimée :
+                  </span>{" "}
                   {career.duration}
                 </div>
 
