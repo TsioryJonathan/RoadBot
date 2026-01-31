@@ -4,6 +4,7 @@ import client from "../../../../lib/openAI";
 /* POST ROUTE TO POST A SURVEY AND SEND IT TO GEMINI */
 export async function POST(request: Request) {
   const answersSummary = await request.json();
+  
   try {
     /*const response = await Gemini.models.generateContent({
       model: "gemini-2.0-flash-lite",

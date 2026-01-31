@@ -13,8 +13,6 @@ export const submitSurvey = async (
     });
     const dataRes = await res.json();
     const toReturn = JSON.parse(dataRes.data.content);
-    console.log("Survey submission response:", toReturn);
-
     return { data: toReturn };
   } catch (error) {
     console.error("Error submitting survey:", error);

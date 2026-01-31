@@ -1,9 +1,8 @@
 "use client";
 import { submitSurvey } from "@/action/SubmitSurvey";
+import SurveyResultLoader from "@/components/loader/SurveyResultLoader";
 import MultiStepWizard from "@/components/survey/MultiStepWizard";
-import SurveyResult, {
-  SurveyResultType,
-} from "@/components/survey/SurveyResult";
+import SurveyResult from "@/components/survey/SurveyResult";
 import { Button } from "@/components/ui/button";
 import { Toaster, useToaster } from "@/components/ui/toaster";
 import { questionList } from "@/data/surveyQuestion/questionList";
@@ -22,6 +21,7 @@ function TakeSurvey() {
   const { toasts, addToast } = useToaster();
 
   const [data, setData] = useState(null);
+  const [isResultLoading, setIsResultLoading] = useState<boolean>(false);
 
   /* Questions based on user situation */
   const question = useMemo<SurveyQuestion[] | null>(() => {
@@ -51,18 +51,24 @@ function TakeSurvey() {
       "success"
     );
     setSurveyDone(true);
+    setIsResultLoading(true);
     const optimizedAnswers =
       userSituation == "student"
         ? mapStudentAnswers(answers)
         : mapProfessionalAnswers(answers);
-    const res = await submitSurvey(optimizedAnswers, userSituation!);    
+    const res = await submitSurvey(optimizedAnswers, userSituation!);
+    setIsResultLoading(false);
     setData(res?.data.jobs);
   };
 
   return (
     <div className="px-10">
       <Toaster toasts={toasts} />
-      {surveyDone && data ? (
+      {isResultLoading ? (
+        <div className="w-full h-full flex items-center justify-center">
+          <SurveyResultLoader />
+        </div>
+      ) : surveyDone && data && !isResultLoading ? (
         <SurveyResult data={data} />
       ) : (
         <div className="flex flex-col items-center p-6 overflow-y-hidden mt-5">
@@ -120,7 +126,7 @@ function TakeSurvey() {
               </div>
 
               <Button
-                className="mt-8 px-6 py-3 bg-[var(--color-accent)] text-white rounded-lg font-medium hover:bg-[var(--color-accent-dark)] transition-colors disabled:opacity-50"
+                className="mt-8 px-6 py-3 bg-[var(--color-accent)] text-white rounded-lg font-medium hover:bg-accent/20 transition-colors disabled:opacity-50"
                 onClick={handlePassToSurvey}
                 disabled={!userSituation}
               >

@@ -1,21 +1,30 @@
 export type UserProfile = {
+  age: string | null;
+  gender?: string | null;
   situation: "student" | "professional";
-  student_interests?: string;
-  StudentInterests?: string[];
-  currentDomain?: string;
 
-  opennessToChange?: "low" | "medium" | "high";
-
-  skillsToDevelop?: string[];
-
+  // Étudiant
+  student_interests?: string[] |string;
+  StudentInterests?: string[] | string ;
+  experienceLevel?: "none" | "some" | "experienced";
   problemSolving?: "low" | "medium" | "high";
+  learningStyle?: string;
+  dataAffinity?: "low" | "medium" | "high";
+  // Professionnel
+  currentDomain?: string;
+  opennessToChange?: "low" | "medium" | "high";
+  salary?: string;
+  appreciation?: string[];
+  skillsToDevelop?: string[];
+  workingStyle?: string;
+  constraints?: string | null;
+
+  // Commun
   teamwork: "solo" | "team" | "mixed";
-
+  collaboration?: "low" | "medium" | "high";
   workEnvironment?: string;
-  techAffinity: "low" | "medium" | "high";
-
   workRhythm: "stable" | "intense" | "flexible";
-
+  techAffinity: "low" | "medium" | "high";
   motivation:
     | "passion"
     | "money"
@@ -24,12 +33,11 @@ export type UserProfile = {
     | "creativity"
     | "impact";
 
-  learningStyle?: string;
-  dataAffinity?: "low" | "medium" | "high";
-
-  collaboration: "low" | "medium" | "high";
-
-  experienceLevel?: "none" | "some" | "experienced";
+  languages: string[];
 
   freeText?: string;
+
+  // Optionnel, pour étendre la précision
+  environmentPreference?: string;
+  projectExperience?: string[];
 };
