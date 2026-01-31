@@ -34,6 +34,7 @@ export default function LoginPage() {
         return;
       }
       router.push("/dashboard");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setError("Identifiants invalides");
     } finally {
@@ -50,6 +51,7 @@ export default function LoginPage() {
         addToast(error, "error");
       }
       router.push("/dashboard");
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (err) {
       setError("Erreur GitHub");
       addToast(error, "error");
