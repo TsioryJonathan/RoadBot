@@ -70,7 +70,7 @@ function SurveyResult({ data }: { data: Career[] }) {
                 <div className="text-sm flex items-center justify-start gap-2">
                   <span className="font-medium flex items-center justify-center gap-2">
                     <Clock /> Durée estimée :
-                  </span>{" "}
+                  </span>
                   {career.duration}
                 </div>
 
@@ -124,7 +124,7 @@ function SurveyResult({ data }: { data: Career[] }) {
                 <span className="font-medium text-foreground">
                   Ressources :
                 </span>{" "}
-                <ul className="list-none">
+                <ul className="list-none flex flex-col gap-2">
                   {career.resources.map((res, i) => (
                     <li key={i} className="list-none ml-5">
                       <Link
