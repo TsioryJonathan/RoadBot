@@ -8,6 +8,12 @@ export const { signIn, signUp, signOut, useSession } = createAuthClient({
 export const signInWithGithub = async () => {
   const data = await signIn.social({
     provider: "github",
+    callbackURL: `${window.location.origin}/dashboard`,
+    fetchOptions: {
+      onSuccess: () => {
+        window.location.href = "/dashboard";
+      },
+    },
   });
   return data;
 };

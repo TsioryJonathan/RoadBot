@@ -4,7 +4,7 @@ import DashboardHeader from "@/components/dashboard/DashboardHeader";
 import Sidebar from "@/components/dashboard/Sidebar";
 import { useSession } from "@/lib/auth-client";
 import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 
 function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -15,7 +15,6 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
       router.push("/login");
     }
   }, [isPending, session, router]);
-  console.log(session?.user);
 
   if (isPending)
     return <p className="text-center mt-8 text-white">Loading...</p>;
@@ -29,7 +28,7 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
         image={session.user.image || "https://avatar.iran.liara.run/public"}
       />
       <Sidebar />
-      <main className="pl-20 pt-20"> {children}</main>
+      <main className="pl-[20vw] pt-20"> {children}</main>
     </div>
   );
 }

@@ -21,7 +21,7 @@ export default function DashboardHeader({
   image,
 }: DashboardHeaderProps) {
   return (
-    <header className="fixed top-0 left-[20vw] w-[80vw] h-20 z-40 bg-foreground/10 border-b border-white/10 px-6 flex items-center justify-between">
+    <header className="fixed top-0 left-[20vw] w-[80vw] h-20 z-999 bg-gray-700 border-b border-white/10 px-6 flex items-center justify-between backdrop-blur-sm">
       {/* Texte de bienvenue */}
       <div className="flex flex-col">
         <h2 className="text-lg font-semibold text-white flex items-center gap-2">
