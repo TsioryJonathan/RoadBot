@@ -498,27 +498,36 @@ export async function POST(request: Request) {
     - Sans indication que le type de reponses est json
     - Pas de backticks autour du JSON.
     - AUCUN texte hors du JSON.
-    - Respecte strictement ce format :
     
+    Tu es un générateur de JSON strict.
+
+RÈGLES ABSOLUES :
+- JSON valide uniquement
+- Aucun tableau ou crochet inutile
+- Les champs "environment" sont TOUJOURS des strings
+- Vérifie la validité JSON avant de répondre
+- Ne JAMAIS utiliser de ] ou } en trop
+
+Structure EXACTE attendue :
+{
+  "jobs": [
     {
-      "jobs": [
-        {
-          "id": "uuid",
-          "title": "Intitulé du métier",
-          "description": {
-            "overview": "Présentation générale du métier",
-            "missions": ["Mission principale 1", "Mission principale 2"],
-            "environment": "Environnement de travail",
-            "responsibilities": ["Responsabilité clé 1", "Responsabilité clé 2"],
-            "skills": ["Compétence utilisée au quotidien 1", "Compétence utilisée au quotidien 2"]
-          },
-          "duration": "Durée estimée pour accéder au métier",
-          "prerequisites": ["Compétence ou formation 1", "Compétence ou formation 2"],
-          "resources": [{ "href": "https://www.onisep.fr", "name": "Onisep" }],
-          "salary": "Salaire moyen le plus élevé pour ce métier"
-        }
-      ]
+      "id": string,
+      "title": string,
+      "description": {
+        "overview": string,
+        "missions": string[],
+        "environment": string,
+        "responsibilities": string[],
+        "skills": string[]
+      },
+      "duration": string,
+      "prerequisites": string[],
+      "resources": { "href": string, "name": string }[],
+      "salary": string
     }
+  ]
+}
     
     CONTRAINTES :
     - Description riche mais concise, 2-3 missions et responsabilités suffisent.
